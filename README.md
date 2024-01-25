@@ -62,3 +62,7 @@ Create a client for ERPNext:
 ```bash
 ./kcadm.sh create clients -r Humanitarians -s clientId=erpnext -s enabled=true -s publicClient=false -s 'redirectUris=["http://localhost:8081/*"]' -s protocol=openid-connect -s directAccessGrantsEnabled=true -s serviceAccountsEnabled=true -s authorizationServicesEnabled=true -s secret=d0b8122f-8dfb-46b7-b68a-f5cc4e25d000
 ```
+
+### Generate API Secret for ERPNext API Requests and Social Logins
+
+docker exec -it frappe_docker-backend-1 bench execute frappe.core.doctype.user.user.generate_keys --args ['user_name']
