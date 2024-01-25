@@ -77,3 +77,7 @@ After setting up ERPNext using the previous steps, you can configure the initial
 * Password: admin
 
 4. Once logged in, you can change the password for the "Administrator" account and configure additional users and permissions as needed.
+
+### Generate API Secret for ERPNext API Requests and Social Logins
+
+docker exec -it frappe_docker-backend-1 bench execute frappe.core.doctype.user.user.generate_keys --args ['user_name']
