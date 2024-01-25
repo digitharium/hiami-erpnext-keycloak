@@ -62,3 +62,18 @@ Create a client for ERPNext:
 ```bash
 ./kcadm.sh create clients -r Humanitarians -s clientId=erpnext -s enabled=true -s publicClient=false -s 'redirectUris=["http://localhost:8081/*"]' -s protocol=openid-connect -s directAccessGrantsEnabled=true -s serviceAccountsEnabled=true -s authorizationServicesEnabled=true -s secret=d0b8122f-8dfb-46b7-b68a-f5cc4e25d000
 ```
+
+### Set Up ERPNext Credentials
+
+After setting up ERPNext using the previous steps, you can configure the initial credentials:
+
+1. Open a web browser and navigate to [http://localhost:8081/](http://localhost:8081/).
+
+2. You will be directed to the ERPNext login page.
+
+3. Use the following credentials to log in:
+
+* Username: Administrator
+* Password: admin
+
+4. Once logged in, you can change the password for the "Administrator" account and configure additional users and permissions as needed.
