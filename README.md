@@ -71,3 +71,18 @@ Create a client for ERPNext:
 -s serviceAccountsEnabled=true \
 -s authorizationServicesEnabled=true 
 ```
+
+### Set Up ERPNext Credentials
+
+After setting up ERPNext using the previous steps, you can configure the initial credentials:
+
+1. Open a web browser and navigate to [http://localhost:8081/](http://localhost:8081/).
+
+2. You will be directed to the ERPNext login page.
+
+3. Use the following credentials to log in:
+
+* Username: Administrator
+* Password: admin
+
+4. Once logged in, you can change the password for the "Administrator" account and configure additional users and permissions as needed.
