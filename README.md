@@ -28,10 +28,46 @@ Download and install the Docker client from the official [Docker website](https:
 docker run -p --name keycloack_container 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:23.0.4 start-dev
 ```
 
-### Clone the frappe_docker repository and set up ERPNext
+### Clone the frappe_docker Repository and Set Up ERPNext
 
 ```bash
 git clone https://github.com/frappe/frappe_docker
 cd frappe_docker
 docker-compose -f pwd.yml up -d
+```
+
+### Set Up ERPNext URI
+
+```bash
+echo "127.0.0.1 erpnext.local" | sudo tee -a /etc/hosts
+```
+
+### Configure Keycloak
+
+Enter the Keycloak container shell:
+
+```bash
+docker exec -it keycloak_container /bin/bash
+```
+
+Inside the container, configure credentials and create a new realm:
+
+```bash
+./kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin
+./kcadm.sh create realms -s realm=newrealm -s enabled=true
+```
+
+Create a client for ERPNext:
+
+```bash
+./kcadm.sh create clients \
+-r newrealm \
+-s clientId=erpnext \
+-s enabled=true \
+-s publicClient=false \
+-s 'redirectUris=["http://erpnext.local/api/method/frappe.integrations.oauth2.authorize"]' \
+-s protocol=openid-connect \
+-s directAccessGrantsEnabled=true \
+-s serviceAccountsEnabled=true \
+-s authorizationServicesEnabled=true
 ```
