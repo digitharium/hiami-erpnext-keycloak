@@ -47,7 +47,7 @@ echo "127.0.0.1 erpnext.local" | sudo tee -a /etc/hosts
 Enter the Keycloak container shell:
 
 ```bash
-docker exec -it keycloak_container /bin/bash
+docker exec -it keycloak_container /opt/keycloak/bin
 ```
 
 Inside the container, configure credentials and create a new realm:
@@ -60,14 +60,5 @@ Inside the container, configure credentials and create a new realm:
 Create a client for ERPNext:
 
 ```bash
-./kcadm.sh create clients \
--r newrealm \
--s clientId=erpnext \
--s enabled=true \
--s publicClient=false \
--s 'redirectUris=["http://erpnext.local/api/method/frappe.integrations.oauth2.authorize"]' \
--s protocol=openid-connect \
--s directAccessGrantsEnabled=true \
--s serviceAccountsEnabled=true \
--s authorizationServicesEnabled=true 
+./kcadm.sh create clients -r Humanitarians -s clientId=erpnext -s enabled=true -s publicClient=false -s 'redirectUris=["http://localhost:8081/*"]' -s protocol=openid-connect -s directAccessGrantsEnabled=true -s serviceAccountsEnabled=true -s authorizationServicesEnabled=true -s secret=d0b8122f-8dfb-46b7-b68a-f5cc4e25d000
 ```
