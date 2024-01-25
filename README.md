@@ -18,12 +18,14 @@ This repository is a template for all the repositories that will be used at the 
 
 This section will highlight the instructions needed for this repository
 
+### Docker install
+
+Download and install the Docker client from the official [Docker website](https://www.docker.com/).
+
 ### Start Keycloak Container
 
 ```bash
-docker run -d --name my_keycloak_container -p 8080:8080
--e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin
-quay.io/keycloak/keycloak:23.0.4 start-dev
+docker run -p --name keycloack_container 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:23.0.4 start-dev
 ```
 
 ### Clone the frappe_docker repository and set up ERPNext
