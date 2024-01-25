@@ -69,5 +69,5 @@ Create a client for ERPNext:
 -s protocol=openid-connect \
 -s directAccessGrantsEnabled=true \
 -s serviceAccountsEnabled=true \
--s authorizationServicesEnabled=true
+-s authorizationServicesEnabled=true 
 ```
